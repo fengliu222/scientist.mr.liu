@@ -4,8 +4,7 @@ angular.module('scientistmrliuApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute',
-  'angularLocalStorage'
+  'ngRoute'
 ])
   .config(function ($routeProvider) {
     $routeProvider

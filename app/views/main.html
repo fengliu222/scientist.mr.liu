@@ -1,28 +1,98 @@
-<div class="row header">
-  <h3 class="text-muted">摆锤式冲击台数据系统</h3>
-</div>
- 
 
-<div class="row" ng-controller="entering">
-  <div class="form-horizontal">
+
+<div class="row" ng-controller="EnteringCtrl">
+  <form class="form-horizontal" name="pre" ng-if="pageNumber==1" action="#">
+
+      <!-- 输入框第一排 -->
+      <div class="form-group">
+        <div class="alert alert-success" ng-if="success"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>数据录入成功！</div>
+      </div>
       <div class="form-group">
         <label for="startFrequency" class="col-sm-2 control-label">起点频率:</label>
-        <div class="col-sm-3">
-          <input type="text" placeholder="起点频率" required class="form-control" name="startFrequency" ng-model="sf">
+        <div class="col-sm-2">
+          <input type="number" 
+                 placeholder="起点频率" 
+                 class="form-control" 
+                 name="startFrequency" 
+                 ngNumber 
+                 ng-model="start.freq">
         </div>
         <label for="sfOrder" class="col-sm-2 control-label">量级:</label>
-        <div class="col-sm-3">
-          <input type="text" placeholder="量级" required class="form-control" name="sfOrder" ng-model="sf.order">
+        <div class="col-sm-2">
+          <input type="number" placeholder="量级" ngNumber required class="form-control" name="startOrder" ng-model="start.order" value="{{start.order}}">
         </div>
          <label for="sfOrder" class="col-sm-2 control-label">斜率:</label>
-        <div class="col-sm-3">
-          <input type="text" placeholder="斜率" required class="form-control" name="sfOrder" ng-model="sf.slope">
+        <div class="col-sm-2">
+          <input type="number" placeholder="斜率" ngNumber  class="form-control" name="startSlope" ng-model="start.slope" value="{{start.slope}}">
         </div>
       </div>
-  </div>
- 
+      <!-- 输入框第二排 -->
+      <div class="form-group">
+        <label for="startFrequency" class="col-sm-2 control-label">拐点频率:</label>
+        <div class="col-sm-2">
+          <input type="number" placeholder="拐点频率" ngNumber required class="form-control" name="inflectFrequency" ng-model="inflect.freq">
+        </div>
+        <label for="sfOrder" class="col-sm-2 control-label">量级:</label>
+        <div class="col-sm-2">
+          <input type="number" placeholder="量级" ngNumber required class="form-control" name="inflectOrder" ng-model="inflect.order">
+        </div>
+      </div>
+      <!-- 输入框第三排 -->
+      <div class="form-group">
+        <label for="startFrequency" class="col-sm-2 control-label">终点频率:</label>
+        <div class="col-sm-2">
+          <input type="number" placeholder="终点频率" ngNumber required class="form-control" name="endFrequency" ng-model="end.freq">
+        </div>
+        <label for="sfOrder" class="col-sm-2 control-label">量级:</label>
+        <div class="col-sm-2">
+          <input type="number" placeholder="量级" ngNumber required class="form-control" name="endOrder" ng-model="end.order">
+        </div>
+      </div>
+      <div class="form-group"> 
+        <span class="error_tip" ng-if="pre.$error.number">请输入数字</span>
+      </div>
+      <!-- 按钮 -->
+      
+        <button type="button" class="btn btn-shadow btn-primary btn-lg btn-block" ng-disabled="pre.$invalid" ng-click="queryData()">{{btnMsg}}</button>
+      
+  </form>
+  
+  <form action="#" name="lastForm" class="form-horizontal" ng-if="pageNumber==2" role="form">
+    <div class="form-group">
+      <em ng-show="empty">根据相应条件没有搜索到对应数据，请录入。</em>
+    </div>
+    <div class="form-group">
+      <label for="bobHeight" class="col-sm-2 control-label">摆锤高度：</label>
+      <div class="col-sm-8">
+        <input type="number" class="form-control" ng-model="last.bobHeight" value="{{last.bobHeight}}" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="cushion" class="col-sm-2 control-label">垫块：</label>
+      <div class="col-sm-8">
+        <input type="number" class="form-control" ng-model="last.cushion" value="{{last.cushion}}"  required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="wool" class="col-sm-2 control-label">两处羊毛毡：</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" ng-model="last.wool" value="{{last.wool}}" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="weight" class="col-sm-2 control-label">配重：</label>
+      <div class="col-sm-8">
+        <input type="number" class="form-control" ng-model="last.weight" value="{{last.weight}}" >
+      </div>
+    </div>
+    <!-- 按钮 -->
+      <div class="col-sm-offset-5">
+        <button type="button" class="btn btn-shadow btn-primary" ng-disabled="lastForm.$invalid" ng-click="saveData()">保存</button>
+        <button type="button" class="btn btn-shadow btn-primary" ng-click="saveCancel()">取消</button>
+      </div>
+  </form>
 </div>
 
-<div class="footer">
+<div class="footer row">
   <p>BY Liu</p>
 </div>

@@ -23,7 +23,13 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
+    <div class="container">
+       <div class="row header">
+        <h3 class="text-muted">摆锤式冲击台数据系统</h3>
+      </div>
+    </div>
+   
+   
     <!-- Add your site or application content here -->
     <div class="container" ng-view=""></div>
 
@@ -52,7 +58,7 @@
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angularLocalStorage/src/angularLocalStorage.js"></script>
+    <script src="bower_components/store2/dist/store2.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -60,6 +66,8 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/entering.js"></script>
+        <script src="scripts/services/localData.js"></script>
+        <script src="scripts/directives/ngNumber.js"></script>
         <!-- endbuild -->
 </body>
 </html>
