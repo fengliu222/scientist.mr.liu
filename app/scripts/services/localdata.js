@@ -7,6 +7,7 @@ angular.module('scientistmrliuApp')
     	checkIfExist : function(data){
     		var data = JSON.stringify(data);
     		var res = store(data);
+            console.log(data);
     		if(res) return res;
     		else return false;
     	},
